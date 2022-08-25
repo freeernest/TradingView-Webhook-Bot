@@ -1,9 +1,3 @@
-# ----------------------------------------------- #
-# Plugin Name           : TradingView-Webhook-Bot #
-# Author Name           : fabston                 #
-# File Name             : main.py                 #
-# ----------------------------------------------- #
-
 import json
 import time
 
@@ -19,6 +13,9 @@ def get_timestamp():
     timestamp = time.strftime("%Y-%m-%d %X")
     return timestamp
 
+@app.route("/")
+def hello_world():
+    return "Hello World!"
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
@@ -37,10 +34,11 @@ def webhook():
 
     except Exception as e:
         print("[X]", get_timestamp(), "Error:\n>", e)
-        return "Error", 400
+        return str(e) + "test", 400
 
 
 if __name__ == "__main__":
     from waitress import serve
 
-    serve(app, host="0.0.0.0", port=80)
+    # app.run()
+    serve(app, host="0.0.0.0", port=8080)

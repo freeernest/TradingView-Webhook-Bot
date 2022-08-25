@@ -14,10 +14,18 @@ from slack_webhook import Slack
 from telegram import Bot
 
 import config
+import predictor
 
 
 def send_alert(data):
+    print("[XXXXXX] send_alert method started:\n")
+
     msg = data["msg"].encode("latin-1", "backslashreplace").decode("unicode_escape")
+
+    print("[XXXXXX] msg:\n" + msg)
+
+    prediction = predictor.predict(msg)
+
     if config.send_telegram_alerts:
         tg_bot = Bot(token=config.tg_token)
         try:
@@ -78,9 +86,9 @@ def send_alert(data):
 
     if config.send_email_alerts:
         try:
-            email_msg = MIMEText(
-                msg.replace("*", "").replace("_", "").replace("`", "")
-            )
+            finall_msg = msg.replace("*", "").replace("_", "").replace("`", "") + "\nPrediction: " + str(prediction)
+            print(finall_msg)
+            email_msg = MIMEText(finall_msg)
             email_msg["Subject"] = config.email_subject
             email_msg["From"] = config.email_sender
             email_msg["To"] = config.email_sender
@@ -95,3 +103,4 @@ def send_alert(data):
                 server.quit()
         except Exception as e:
             print("[X] Email Error:\n>", e)
+            raise e

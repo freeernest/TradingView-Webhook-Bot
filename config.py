@@ -6,11 +6,10 @@
 
 # TradingView Example Alert Message:
 # {
-# "key":"9T2q394M92", "telegram":"-1001298977502", "discord":"789842349670960670/BFeBBrCt-w2Z9RJ2wlH6TWUjM5bJuC29aJaJ5OQv9sE6zCKY_AlOxxFwRURkgEl852s3", "msg":"Long #{{ticker}} at `{{close}}`"
-# }
+# "key":"9T2q394M92", "telegram":"-1001298977502", "discord":"789842349670960670/BFeBBrCt-w2Z9RJ2wlH6TWUjM5bJuC29aJaJ># }
 
 sec_key = (
-    ""  # Can be anything. Has to match with "key" in your TradingView alert message
+    "119864"  # Can be anything. Has to match with "key" in your TradingView alert message
 )
 
 # Telegram Settings
@@ -20,8 +19,7 @@ channel = 0  # Channel ID (ex. -1001487568087)
 
 # Discord Settings
 send_discord_alerts = False
-discord_webhook = ""  # Discord Webhook URL (https://support.discordapp.com/hc/de/articles/228383668-Webhooks-verwenden)
-
+discord_webhook = ""  # Discord Webhook URL (https://support.discordapp.com/hc/de/articles/228383668-Webhooks-verwend>
 # Slack Settings
 send_slack_alerts = False
 slack_webhook = ""  # Slack Webhook URL (https://api.slack.com/messaging/webhooks)
@@ -34,12 +32,12 @@ tw_atoken = ""
 tw_asecret = ""
 
 # Email Settings
-send_email_alerts = False
-email_sender = ""  # Your email address
-email_receivers = ["", ""]  # Receivers, can be multiple
+send_email_alerts = True
+email_sender = "yakovfeigin@gmail.com"  # Your email address
+email_receivers = ["erikfeigin@gmail.com"]  # Receivers, can be multiple
 email_subject = "Trade Alert!"
 
 email_port = 465  # SMTP SSL Port (ex. 465)
-email_host = ""  # SMTP host (ex. smtp.gmail.com)
-email_user = ""  # SMTP Login credentials
-email_password = ""  # SMTP Login credentials
+email_host = "smtp.gmail.com"  # SMTP host (ex. smtp.gmail.com)
+email_user = "yakovfeigin@gmail.com"  # SMTP Login credentials
+email_password = "bsnbawhmvxcjxqkj"  # SMTP Login credentials
